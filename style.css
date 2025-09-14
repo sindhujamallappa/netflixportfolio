@@ -1,0 +1,107 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #000000;
+    font-family: Arial, sans-serif;
+    color: #fff;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+/* Netflix Logo - starts centered */
+.netflix-logo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1);
+    max-width: 300px;
+    max-height: 200px;
+    z-index: 10;
+    transition:
+        top 1s, right 1s, left 1s, max-width 1s, max-height 1s, transform 1s;
+}
+
+/* Logo fixed to top-right after transition */
+.netflix-logo.moved {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    left: auto;
+    transform: none;
+    max-width: 200px;
+    max-height: 120px;
+    z-index: 100;
+}
+
+.profile-screen {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    padding: 20px;
+}
+
+.profile-screen.visible {
+    opacity: 1;
+}
+
+.profile-screen h1 {
+    font-size: clamp(2rem, 8vw, 3rem);
+    margin-bottom: clamp(1rem, 4vh, 2rem);
+    font-weight: 700;
+}
+
+.profiles {
+    display: flex;
+    gap: clamp(1rem, 4vw, 2rem);
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile {
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    margin-bottom: 16px;
+}
+
+.profile:hover {
+    transform: scale(1.1);
+}
+
+.avatar {
+    width: clamp(80px, 20vw, 120px);
+    height: clamp(80px, 20vw, 120px);
+    border-radius: 10px;
+    margin-bottom: 0.5rem;
+}
+
+.blue { background-color: #4A90E2; }
+.red { background-color: #E74C3C; }
+.yellow { background-color: #F1C40F; }
+
+.profile span {
+    font-size: clamp(1rem, 4vw, 1.2rem);
+    color: #eee;
+    margin-top: 4px;
+    display: block;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+    .netflix-logo { max-width: 80vw; max-height: 30vh; }
+    .netflix-logo.moved { max-width: 70px; max-height: 40px; }
+    .profile-screen h1 { font-size: 1.5rem; }
+    .profiles { flex-direction: column; gap: 1.2rem; }
+    .avatar { width: 80px; height: 80px; }
+    .profile span { font-size: 1rem; }
+}
